@@ -13,8 +13,6 @@ Compatible __windows__ / __linux__
 
 # Install
 
-Check the [release page](https://github.com/mh-cbon/disksinfo/releases)!
-
 #### Go
 
 ```sh
