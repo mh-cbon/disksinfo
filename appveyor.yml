@@ -1,0 +1,16 @@
+version: "{build}"
+os: Windows Server 2012 R2
+clone_folder: c:\gopath\src\github.com\mh-cbon\disksinfo
+
+environment:
+  GOPATH: c:\gopath
+
+install:
+  - set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
+  - go version
+  - go env
+
+test_script:
+  - go test github.com/mh-cbon/disksinfo -v
+
+build: off

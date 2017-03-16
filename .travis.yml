@@ -1,0 +1,9 @@
+language: go
+go:
+  - 1.8
+
+install:
+  - cd $GOPATH/src/github.com/mh-cbon/disksinfo
+  - go install
+
+script: go test diskinfo/*
