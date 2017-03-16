@@ -32,10 +32,11 @@ func NewProperties() *Properties {
 	return &Properties{}
 }
 
-// PropertiesList ...
+// PropertiesList is type alias to []*Properties
 type PropertiesList []*Properties
 
-// Merge ...
+// Merge some []*Properties into this list. what is a property name of Properties.
+// Partitions are matched by their Path value.
 func (l PropertiesList) Merge(some PropertiesList, what ...string) []*Properties {
 	for i, d := range l {
 		s := some.FindByPath(d.Path)
@@ -72,7 +73,8 @@ func (l PropertiesList) Merge(some PropertiesList, what ...string) []*Properties
 	return l
 }
 
-// Append ...
+// Append some []*Properties into this list. what is a property name of Properties.
+// Partitions are matched by their Path value.
 func (l PropertiesList) Append(some PropertiesList) []*Properties {
 	for _, d := range some {
 		s := l.FindByPath(d.Path)
@@ -83,7 +85,8 @@ func (l PropertiesList) Append(some PropertiesList) []*Properties {
 	return l
 }
 
-// FindByPath ...
+// FindByPath search a partition by its path.
+// Partitions are matched by their Path value.
 func (l PropertiesList) FindByPath(path string) *Properties {
 	for _, d := range l {
 		if d.Path == path {
