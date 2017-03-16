@@ -8,8 +8,6 @@ Compatible __windows__ / __linux__
 
 # Install
 
-{{template "gh/releases" .}}
-
 #### Go
 {{template "go/install" .}}
 
