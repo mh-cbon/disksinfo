@@ -44,18 +44,18 @@ func runWmic() ([]*Properties, error) {
 	return ret, err
 }
 
-// WmicReader ...
+// WmicReader reads a wmic logicaldisk command output.
 type WmicReader struct {
 	r    io.Reader
 	line string
 }
 
-// NewWmicReader ...
+// NewWmicReader parses a wmic logicaldisk command output.
 func NewWmicReader(r io.Reader) *WmicReader {
 	return &WmicReader{r: r}
 }
 
-// Read ...
+// Read parses a wmic logicaldisk command output, it returns a list of properies for each property found.
 func (l *WmicReader) Read() ([]*Properties, error) {
 
 	var ret []*Properties

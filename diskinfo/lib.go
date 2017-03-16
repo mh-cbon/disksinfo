@@ -1,3 +1,4 @@
+// Package diskinfo provides the list of partitions
 package diskinfo
 
 import "runtime"
