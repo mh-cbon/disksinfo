@@ -11,6 +11,6 @@ install:
   - go env
 
 test_script:
-  - go test github.com/mh-cbon/disksinfo -v
+  - go test github.com/mh-cbon/disksinfo/diskinfo -v
 
 build: off
