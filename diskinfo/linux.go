@@ -16,30 +16,30 @@ type LinuxLoader struct {
 // Load returns the list of partition found and their properties.
 func (l *LinuxLoader) Load() ([]*Properties, error) {
 	//-
-	ret := []*Properties{}
+	var ret PropertiesList
 
 	if temp, err := runDf(); err != nil {
 		return ret, err
 	} else {
-		ret = PropertiesList(ret).Append(PropertiesList(temp))
+		ret = ret.Append(temp)
 	}
 	//-
 	if temp, err := runLsLabel(); err != nil {
 		return ret, err
 	} else {
-		ret = PropertiesList(ret).Append(PropertiesList(temp))
+		ret = ret.Append(temp)
 	}
 	//-
 	if temp, err := runLsUsb(); err != nil {
 		return ret, err
 	} else {
-		ret = PropertiesList(ret).Merge(PropertiesList(temp), "IsRemovable")
+		ret = ret.Merge(temp, "IsRemovable")
 	}
 	//-
 	if temp, err := runMount(); err != nil {
 		return ret, err
 	} else {
-		ret = PropertiesList(ret).Merge(PropertiesList(temp), "Label")
+		ret = ret.Merge(temp, "Label")
 	}
 	//-
 	return ret, nil
